@@ -313,7 +313,10 @@ class CartBase extends PayPalModel
      */
     public function setNotifyUrl($notify_url)
     {
-        UrlValidator::validate($notify_url, "NotifyUrl");
+        if(!empty($notify_url)){
+            UrlValidator::validate($notify_url, "NotifyUrl");
+        }
+
         $this->notify_url = $notify_url;
         return $this;
     }
